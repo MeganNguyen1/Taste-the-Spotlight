@@ -8,7 +8,7 @@ interface BrowseProps {
   initialSearch?: string;
 }
 
-const CELEBRITY_TYPES = ['actor', 'athlete', 'singer', 'chef'];
+const CELEBRITY_TYPES = ['actor', 'athlete', 'singer', 'chef', 'band'];
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const DIETARY_TAGS = ['vegan', 'vegetarian', 'gluten-free', 'dairy-free', 'high-protein'];
 
