@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, Filter, ChefHat, Clock, Users, X } from 'lucide-react';
+import { Search, Filter, Clock, Users, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { CelebrityWithRecipe } from '../lib/types';
 
@@ -84,47 +84,35 @@ export default function Browse({ onNavigate, initialSearch = '' }: BrowseProps) 
   return (
     <div className="min-h-screen bg-black">
       <div className="bg-gradient-to-b from-red-950/20 to-transparent">
-        <header className="border-b border-zinc-900">
+        <div className="border-b border-zinc-900">
           <div className="max-w-7xl mx-auto px-6 py-6">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={() => onNavigate('home')}
-                className="flex items-center space-x-3 group"
-              >
-                <ChefHat className="w-8 h-8 text-red-600" />
-                <span className="text-2xl font-bold bg-gradient-to-r from-red-500 to-amber-500 bg-clip-text text-transparent">
-                  StarPlate
-                </span>
-              </button>
-
-              <div className="flex items-center space-x-4">
-                <div className="relative w-96">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search celebrities or recipes..."
-                    className="w-full bg-zinc-900 border border-zinc-800 rounded-full pl-12 pr-4 py-3 text-white placeholder-gray-500 outline-none focus:border-red-600 transition-colors"
-                  />
-                </div>
-
-                <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="relative flex items-center space-x-2 px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-full text-white hover:border-red-600 transition-colors"
-                >
-                  <Filter className="w-5 h-5" />
-                  <span>Filters</span>
-                  {activeFilterCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 rounded-full text-xs flex items-center justify-center">
-                      {activeFilterCount}
-                    </span>
-                  )}
-                </button>
+            <div className="flex items-center justify-end space-x-4">
+              <div className="relative w-96">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search celebrities or recipes..."
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-full pl-12 pr-4 py-3 text-white placeholder-gray-500 outline-none focus:border-red-600 transition-colors"
+                />
               </div>
+
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="relative flex items-center space-x-2 px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-full text-white hover:border-red-600 transition-colors"
+              >
+                <Filter className="w-5 h-5" />
+                <span>Filters</span>
+                {activeFilterCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 rounded-full text-xs flex items-center justify-center">
+                    {activeFilterCount}
+                  </span>
+                )}
+              </button>
             </div>
           </div>
-        </header>
+        </div>
 
         {showFilters && (
           <div className="border-b border-zinc-900 bg-zinc-950/50 backdrop-blur">
